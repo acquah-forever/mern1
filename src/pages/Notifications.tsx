@@ -1,10 +1,12 @@
-
+import { NavLink } from "react-router-dom"
 
 const Notifications = () => {
   return (
-    <div>
-      
-    </div>
+    <NavLink to={"/notifications"}>
+      <div>
+        <h2>Notifications</h2>
+      </div>
+    </NavLink>
   )
 }
 
