@@ -6,7 +6,7 @@ import { Routes, Route } from 'react-router-dom'
 
 const App = () => {
   return (
-    <div className=' bg-linear-to-br from-slate-900 to-slate-400  min-h-screen text-black flex flex-col'>
+    <div className=' bg-linear-to-tl from-slate-900 to-slate-400  min-h-screen text-black flex flex-col'>
       <div className='container mx-auto flex flex-col flex-1'>
         <NavBar />
         <main className='flex-1'>
