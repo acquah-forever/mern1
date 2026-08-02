@@ -26,15 +26,15 @@ const Login = () => {
   }
 
   return (
-    <div className=" flex flex-col justify-center items-center gap-5 min-h-screen sm:px-7">
-      <form className="bg-white/50 sm:border rounded-lg flex flex-col gap-4 sm:px-30 py-5 max-w-2xl w-full" onSubmit={handleSubmit(onsubmit)}>
+    <div className=" flex flex-col justify-center items-center gap-5 min-h-screen px-5">
+      <form className="bg-white/50 sm:border rounded-lg flex flex-col gap-4 px-5 sm:px-30 py-5 max-w-2xl w-full" onSubmit={handleSubmit(onsubmit)}>
         <div className="flex flex-col justify-center items-center gap-3 p-4">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Log in</h1>
           <p className="text-sm">Dont have an account? <span className="cursor-pointer text-blue-400 text-sm" onClick={handleClick}>Sign up</span></p>
         </div>
 
         <div className="sm:p-1 flex flex-col border hover:border-blue-500 rounded-lg">
-          <label className="pl-3 py-1" htmlFor="email">Email</label>
+          <label className="pl-3 py-1 text-sm" htmlFor="email">Email</label>
           <input className="px-4 py-0.5 outline-none border-none" type="email" {...register("email", { required: "Enter an email address, like name@example.com" })} />
         </div>
         {errors.email && <span className="text-red-500 text-sm font-semibold flex items-center">
@@ -42,17 +42,17 @@ const Login = () => {
           {errors.email.message} </span>}
 
         <div className="sm:p-1 flex flex-col border hover:border-blue-500 rounded-lg">
-          <label className="pl-3 py-1" htmlFor="password">Password</label>
+          <label className="pl-3 py-1 text-sm" htmlFor="password">Password</label>
           <input className="px-4 py-0.5 outline-none border-none" type="password" {...register("password", { required: "This field is required" })} />
         </div>
         {errors.password && <span className="text-red-500 text-sm font-semibold flex items-center">
           <CircleAlert className="mr-1" size={15} />
           {errors.password.message}</span>}
         <span className="cursor-pointer underline hover:text-slate-500 text-sm">Forgot Password?</span>
-        <button className="bg-blue-600 text-white rounded-lg py-3 sm:py-4 text-xl mb-7 hover:bg-blue-500 cursor-pointer" type="submit">Login</button>
+        <button className="bg-blue-600 text-white rounded-lg py-3 sm:py-4 text-md sm:text-xl mb-7 hover:bg-blue-500 cursor-pointer" type="submit">Login</button>
         <div className="flex items-center">
           <div className="grow border-t border-gray-300"></div>
-          <span className="mx-4 text-sm text-gray-500">OR</span>
+          <span className="mx-4 text-sm text-black">OR</span>
           <div className="grow border-t border-gray-300"></div>
         </div>
         <button className="btn  btn-md sm:btn-xl bg-white text-black border-[#e5e5e5]">
@@ -68,8 +68,8 @@ const Login = () => {
           Login with Apple
         </button>
         <div className="flex items-center mt-10">
-          <div className="grow border-t border-gray-300"></div>
-          <div className="grow border-t border-gray-300"></div>
+          <div className="grow border-t border-black"></div>
+          <div className="grow border-t border-black"></div>
         </div>
         <div className="flex justify-center items-center gap-5 mt-5 text-sm text-gray-500">
           <span className="cursor-pointer underline font-bold text-xs sm:text-sm">Terms of Use</span>
