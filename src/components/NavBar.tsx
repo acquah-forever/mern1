@@ -35,18 +35,18 @@ const NavBar = () => {
       </div >
 
       {isMenuOpen && (
-        <ul className="flex md:hidden flex-col  text-white text-lg font-semibold">
+        <ul className="flex md:hidden flex-col  text-white text-lg font-semibold mb-5 ">
           <NavLink to={"/notifications"}>
-            <li className="cursor-pointer p-2 rounded hover:bg-sky-600 duration-150">Notifications</li>
+            <li className="cursor-pointer p-2 rounded hover:bg-sky-600 duration-150 text-sm">Notifications</li>
           </NavLink>
           <NavLink to={"/profile"}>
-            <li className="cursor-pointer p-2 rounded hover:bg-sky-600 duration-150">Profile</li>
+            <li className="cursor-pointer p-2 rounded hover:bg-sky-600 duration-150 text-sm">Profile</li>
           </NavLink>
           <NavLink to={"/settings"}>
-            <li className="cursor-pointer p-2 rounded hover:bg-sky-600 duration-150">Settings</li>
+            <li className="cursor-pointer p-2 rounded hover:bg-sky-600 duration-150 text-sm">Settings</li>
           </NavLink>
           <NavLink to={"/login"}>
-            <li className="cursor-pointer p-2 rounded hover:bg-sky-600 duration-150">Login</li>
+            <li className="cursor-pointer p-2 rounded hover:bg-sky-600 duration-150 text-sm">Login</li>
           </NavLink>
         </ul>
       )}

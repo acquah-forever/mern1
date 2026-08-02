@@ -23,15 +23,15 @@ const Signup = () => {
     }
 
     return (
-        <div className=" flex flex-col justify-center items-center gap-5 min-h-screen">
-            <form className="bg-white/50 sm:border rounded-lg flex flex-col gap-4 p-5 sm:px-30 py-5 max-w-2xl w-full" onSubmit={handleSubmit(onsubmit)}>
+        <div className=" flex flex-col justify-center items-center gap-5 min-h-screen px-5">
+            <form className="bg-white/50 sm:border rounded-lg flex flex-col gap-4 px-5 sm:px-30 py-5 max-w-2xl w-full" onSubmit={handleSubmit(onsubmit)}>
                 <div className="flex flex-col justify-center items-center gap-3 p-4">
                     <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Sign Up</h1>
                     <p className="text-sm">Already have an account? <span className="cursor-pointer text-blue-400 text-sm" onClick={handleClick}>Log in</span></p>
                 </div>
 
                 <div className="p-1 flex flex-col border hover:border-blue-500 rounded-lg">
-                    <label className="pl-3 py-1" htmlFor="username">Username</label>
+                    <label className="pl-3 py-1 text-sm" htmlFor="username">Username</label>
                     <input className="px-4 py-0.5 outline-none border-none" type="text" {...register("username", { required: "Enter a username" })} />
                 </div>
                 {errors.username && <span className="text-red-500 text-sm font-semibold flex items-center">
@@ -39,7 +39,7 @@ const Signup = () => {
                     {errors.username.message} </span>}
 
                 <div className="p-1 flex flex-col border hover:border-blue-500 rounded-lg">
-                    <label className="pl-3 py-1" htmlFor="email">Email</label>
+                    <label className="pl-3 py-1 text-sm" htmlFor="email">Email</label>
                     <input className="px-4 py-0.5 outline-none border-none" type="email" {...register("email", { required: "Enter an email address, like name@example.com" })} />
                 </div>
                 {errors.email && <span className="text-red-500 text-sm font-semibold flex items-center">
@@ -47,16 +47,16 @@ const Signup = () => {
                     {errors.email.message} </span>}
 
                 <div className=" flex flex-col border hover:border-blue-500 rounded-lg">
-                    <label className="pl-3 py-1" htmlFor="password">Password</label>
+                    <label className="pl-3 py-1 text-sm" htmlFor="password">Password</label>
                     <input className="px-4 py-0.5 outline-none border-none" type="password" {...register("password", { required: "This field is required" })} />
                 </div>
                 {errors.password && <span className="text-red-500 text-sm font-semibold flex items-center">
                     <CircleAlert className="mr-1" size={15} />
                     {errors.password.message}</span>}
-                <button className="bg-blue-600 text-white rounded-lg py-3 sm:py-4 text-xl mb-7 hover:bg-blue-500 cursor-pointer" type="submit">Sign Up</button>
+                <button className="bg-blue-600 text-white rounded-lg py-3 sm:py-4 text-md sm:text-xl mb-7 hover:bg-blue-500 cursor-pointer" type="submit">Sign Up</button>
                 <div className="flex items-center">
                     <div className="grow border-t border-gray-300"></div>
-                    <span className="mx-4 text-sm text-gray-500">OR</span>
+                    <span className="mx-4 text-sm text-black">OR</span>
                     <div className="grow border-t border-gray-300"></div>
                 </div>
                 <button className="btn btn-md sm:btn-xl bg-white text-black border-[#e5e5e5]">
@@ -72,8 +72,8 @@ const Signup = () => {
                     Continue with Apple
                 </button>
                 <div className="flex items-center mt-10">
-                    <div className="grow border-t border-gray-300"></div>
-                    <div className="grow border-t border-gray-300"></div>
+                    <div className="grow border-t border-black"></div>
+                    <div className="grow border-t border-black"></div>
                 </div>
                 <div className="flex justify-center items-center gap-5 mt-5 text-sm text-gray-500">
                    <h1 className="text-center text-xs sm:text-sm">*By signing up you agree to our  <span className="cursor-pointer underline font-bold">Terms of Use</span> and you have read our <span className="cursor-pointer underline font-bold">Privacy Policy</span>.</h1>
