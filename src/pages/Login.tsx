@@ -18,7 +18,7 @@ const Login = () => {
 
   function onsubmit(data: FormValues) {
     console.log(data)
-    alert("hurrrrray")
+    navigate("/")
   }
 
   function handleClick() {
@@ -27,7 +27,7 @@ const Login = () => {
 
   return (
     <div className=" flex flex-col justify-center items-center gap-5 min-h-screen sm:px-7">
-      <form className="bg-white sm:border rounded-lg flex flex-col gap-4 p-5 sm:px-25 py-5 max-w-2xl w-full" onSubmit={handleSubmit(onsubmit)}>
+      <form className="bg-white/50 sm:border rounded-lg flex flex-col gap-4 sm:px-30 py-5 max-w-2xl w-full" onSubmit={handleSubmit(onsubmit)}>
         <div className="flex flex-col justify-center items-center gap-3 p-4">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Log in</h1>
           <p className="text-sm">Dont have an account? <span className="cursor-pointer text-blue-400 text-sm" onClick={handleClick}>Sign up</span></p>

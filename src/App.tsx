@@ -11,19 +11,22 @@ import { Routes, Route } from 'react-router-dom'
 
 const App = () => {
   return (
-    <div className=' bg-linear-to-tl from-slate-900 to-slate-400  min-h-screen text-black flex flex-col'>
-      <div className='container mx-auto flex flex-col flex-1'>
-        <NavBar />
-        <main className='flex-1'>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/notifications' element={<Notifications />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/settings' element={<Settings />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/signup' element={<Signup />} />
-          </Routes>
-        </main>
+    <div className="relative min-h-screen flex flex-col bg-[url('https://cdn.pixabay.com/photo/2021/01/21/15/54/books-5937716_1280.jpg')] bg-cover bg-center bg-no-repeat bg-fixed text-black">
+      <div className='pointer-events-none absolute inset-0 z-0 bg-black/30'></div>
+      <div className='relative z-10'>
+        <div className='container mx-auto flex flex-col flex-1'>
+          <NavBar />
+          <main className='flex-1'>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/notifications' element={<Notifications />} />
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/settings' element={<Settings />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/signup' element={<Signup />} />
+            </Routes>
+          </main>
+        </div>
       </div>
     </div>
   )
