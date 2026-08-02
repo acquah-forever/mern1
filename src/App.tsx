@@ -4,6 +4,7 @@ import Notifications from './pages/Notifications';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 
 import { Routes, Route } from 'react-router-dom'
@@ -20,6 +21,7 @@ const App = () => {
             <Route path='/profile' element={<Profile />} />
             <Route path='/settings' element={<Settings />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
           </Routes>
         </main>
       </div>
