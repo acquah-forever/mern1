@@ -35,7 +35,7 @@ const Login = () => {
 
         <div className="sm:p-1 flex flex-col border hover:border-blue-500 rounded-lg">
           <label className="pl-3 py-1 text-sm" htmlFor="email">Email</label>
-          <input className="px-4 py-0.5 outline-none border-none" type="email" {...register("email", { required: "Enter an email address, like name@example.com" })} />
+          <input className="px-4 py-0.5 outline-none border-none" id="email" type="email" {...register("email", { required: "Enter an email address, like name@example.com" })} />
         </div>
         {errors.email && <span className="text-red-500 text-sm font-semibold flex items-center">
           <CircleAlert className="mr-1" size={15} />
@@ -43,7 +43,7 @@ const Login = () => {
 
         <div className="sm:p-1 flex flex-col border hover:border-blue-500 rounded-lg">
           <label className="pl-3 py-1 text-sm" htmlFor="password">Password</label>
-          <input className="px-4 py-0.5 outline-none border-none" type="password" {...register("password", { required: "This field is required" })} />
+          <input className="px-4 py-0.5 outline-none border-none" id="password" type="password" {...register("password", { required: "This field is required" })} />
         </div>
         {errors.password && <span className="text-red-500 text-sm font-semibold flex items-center">
           <CircleAlert className="mr-1" size={15} />

@@ -1,5 +1,6 @@
 import Home from './pages/Home';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 import Notifications from './pages/Notifications';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
@@ -26,6 +27,7 @@ const App = () => {
               <Route path='/signup' element={<Signup />} />
             </Routes>
           </main>
+          <Footer />
         </div>
       </div>
     </div>
