@@ -33,7 +33,6 @@ const Search = () => {
         setOpen(true);
     }
 
-
     return (
         <div className='flex flex-col items-center justify-center w-full'>
             <form className="flex  items-center justify-center gap-2 border border-white rounded-lg px-4 py-2 max-w-4xl w-full">
@@ -49,16 +48,21 @@ const Search = () => {
                             <div>
                                 <Pen className='cursor-pointer hover:text-sky-500' size={20} onClick={handleClick1} />
                             </div>
-                            <Trash className='cursor-pointer hover:text-red-500' size={20}  />
+                            <Trash className='cursor-pointer hover:text-red-500' size={20} />
                         </div>
                     </div>
                 ))}
+                {open && edit && (
+                    <div className='border-2 border-gray-300 rounded-lg p-2 w-full'>
+                        <h1>Edit Thought</h1>
+                        <input className='w-full outline-none border-none' type="text" />
+                        <div className='flex justify-end gap-2 mt-2'>
+                            <button className='cursor-pointer bg-teal-400 rounded text-md px-4 py-2'>Save</button>
+                            <button className='cursor-pointer bg-red-500 rounded text-md px-4 py-2' onClick={() => setOpen(false)}>Cancel</button>
+                        </div>
+                    </div>
+                )}
             </div>
-            {open && edit && (
-                <div>
-
-                </div>
-            )}
 
         </div>
     )
