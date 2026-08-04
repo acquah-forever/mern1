@@ -13,9 +13,9 @@ import { Routes, Route } from 'react-router-dom'
 const App = () => {
   return (
     <div className="relative min-h-screen flex flex-col bg-[url('https://cdn.pixabay.com/photo/2021/01/21/15/54/books-5937716_1280.jpg')] bg-cover bg-center bg-no-repeat bg-fixed text-black">
-      <div className='pointer-events-none absolute inset-0 z-0 bg-black/30'></div>
-      <div className='relative z-10'>
-        <div className='container mx-auto flex flex-col flex-1'>
+      <div className='pointer-events-none absolute inset-0 z-0 bg-black/20'></div>
+      <div className='relative z-10 flex flex-1 flex-col'>
+        <div className='container mx-auto flex w-full flex-1 flex-col'>
           <NavBar />
           <main className='flex-1'>
             <Routes>
