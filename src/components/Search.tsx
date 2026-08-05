@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { Trash, Pen } from 'lucide-react';
+import { MessageCircle, Heart, Repeat2 } from 'lucide-react';
 
 
 const Search = () => {
 
     const [inputValue, setInputValue] = useState<string>("");
     const [thoughts, setThoughts] = useState<string[]>([]);
-    const [open, setOpen] = useState<boolean>(false);
     const [edit, setEdit] = useState<{ index: number; value: string } | null>(null);
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -30,7 +29,11 @@ const Search = () => {
     function handleClick1(event: React.MouseEvent<SVGSVGElement>, index: number) {
         event.preventDefault();
         setEdit({ index, value: thoughts[index] });
-        setOpen(true);
+
+    }
+
+    function handleChange1(){
+        setEdit({ ...edit, value: inputValue });
     }
 
     return (
@@ -46,22 +49,28 @@ const Search = () => {
                         <p>{thought}</p>
                         <div className='flex gap-4'>
                             <div>
-                                <Pen className='cursor-pointer hover:text-sky-500' size={20} onClick={handleClick1} />
+                                <MessageCircle className='cursor-pointer hover:text-sky-500' size={20} onClick={(event) => handleClick1(event, index)} />
                             </div>
-                            <Trash className='cursor-pointer hover:text-red-500' size={20} />
+                            <div>
+                                <Heart className='cursor-pointer hover:text-red-500' size={20} />
+                            </div>
+                            <div>
+                                <Repeat2 className='cursor-pointer hover:text-purple-500' size={20} />
+                            </div>
                         </div>
+                        {edit.index === index && (
+                            <div className='border-2 border-gray-300 rounded-lg p-2 w-full'>
+                                <h1>Edit Thought</h1>
+                                <input className='w-full outline-none border-none' type="text" onChange={handleChange1} />
+                                <div className='flex justify-end gap-2 mt-2'>
+                                    <button className='cursor-pointer bg-teal-400 rounded text-md px-4 py-2'>Save</button>
+                                    <button className='cursor-pointer bg-red-500 rounded text-md px-4 py-2' >Cancel</button>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 ))}
-                {open && edit && (
-                    <div className='border-2 border-gray-300 rounded-lg p-2 w-full'>
-                        <h1>Edit Thought</h1>
-                        <input className='w-full outline-none border-none' type="text" />
-                        <div className='flex justify-end gap-2 mt-2'>
-                            <button className='cursor-pointer bg-teal-400 rounded text-md px-4 py-2'>Save</button>
-                            <button className='cursor-pointer bg-red-500 rounded text-md px-4 py-2' onClick={() => setOpen(false)}>Cancel</button>
-                        </div>
-                    </div>
-                )}
+
             </div>
 
         </div>
