@@ -36,6 +36,14 @@ const Search = () => {
         setEdit({ ...edit, value: event.target.value });
     }
 
+    function handleSave() {
+        if (!edit) return
+        const updatedThoughts = [...thoughts];
+        updatedThoughts[edit.index] = edit.value;
+        setThoughts(updatedThoughts);
+        setEdit(null);
+    }
+
     return (
         <div className='flex flex-col items-center justify-center w-full'>
             <form className="flex  items-center justify-center gap-2 border border-white rounded-lg px-4 py-2 max-w-4xl w-full">
@@ -47,7 +55,7 @@ const Search = () => {
                 {thoughts.map((thought, index) => (
                     <div key={index} className='bg-white/50 p-3 rounded-lg mb-2 flex flex-col justify-between'>
                         <p>{thought}</p>
-                        <div className='flex gap-4 mb-5'>
+                        <div className='flex gap-4 mt-5 mb-5'>
                             <div>
                                 <MessageCircle className='cursor-pointer hover:text-sky-500' size={20} onClick={(event) => handleClick1(event, index)} />
                             </div>
@@ -59,11 +67,11 @@ const Search = () => {
                             </div>
                         </div>
                         {edit?.index === index && (
-                            <div className='border-2 border-gray-300 rounded-lg p-2 w-full'>
-                                <h1>Edit Thought</h1>
-                                <input className='w-full outline-none border-none' type="text" onChange={handleChange1} />
+                            <div className='border-2 border-gray-300 rounded-lg px-7 py-5 w-full'>
+                                <h1 className='italic mb-4'>Edit Thought</h1>
+                                <input className='w-full border-2 border-sky-600 outline-none mb-5 p-3' type="text" onChange={handleChange1} />
                                 <div className='flex justify-end gap-2 mt-2'>
-                                    <button className='cursor-pointer bg-teal-400 rounded text-md px-4 py-2'>Save</button>
+                                    <button className='cursor-pointer bg-teal-400 rounded text-md px-4 py-2'onClick={handleSave}>Save</button>
                                     <button className='cursor-pointer bg-red-500 rounded text-md px-4 py-2' onClick={() => setEdit(null)}>Cancel</button>
                                 </div>
                             </div>
