@@ -6,14 +6,18 @@ const Search = () => {
 
     const [inputValue, setInputValue] = useState<string>("");
     const [thoughts, setThoughts] = useState<string[]>([]);
-    const [edit, setEdit] = useState<{ index: number; value: string } | null>(null);
 
-    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setInputValue(event.target.value)
+    const [edit, setEdit] = useState<{
+        index: number,
+        value: string
+    } | null>(null);
+
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+        setInputValue(e.target.value)
     }
 
-    function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
-        event.preventDefault()
+    function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault()
         const thought = inputValue.trim();
         if (thought === "") {
             return;
@@ -26,9 +30,12 @@ const Search = () => {
         setInputValue("");
     }
 
-    function handleClick1(event: React.MouseEvent<SVGSVGElement>, index: number) {
-        event.preventDefault();
-        setEdit({ index, value: thoughts[index] });
+    function handleClick1(e: React.MouseEvent<SVGSVGElement>, index: number) {
+        e.preventDefault();
+        setEdit({
+            index,
+            value: thoughts[index]
+        });
 
     }
 
@@ -68,7 +75,7 @@ const Search = () => {
                         <p>{thought}</p>
                         <div className='flex gap-4 mt-5 mb-5'>
                             <button type='button'>
-                                <MessageCircle className='cursor-pointer hover:text-sky-500' size={20} onClick={(event) => handleClick1(event, index)} />
+                                <MessageCircle className='cursor-pointer hover:text-sky-500' size={20} onClick={(e) => handleClick1(e, index)} />
                             </button>
                             <button type='button'>
                                 <Heart className='cursor-pointer hover:text-red-500' size={20} />
@@ -83,7 +90,7 @@ const Search = () => {
                                 <h1 className='italic mb-4'>Edit Thought Here</h1>
                                 <input className='w-full border-2 border-sky-600 outline-none mb-5 p-3' type="text" value={edit.value} onChange={handleChange1} />
                                 <div className='flex justify-end gap-2 mt-2'>
-                                    <button className='cursor-pointer bg-teal-400 rounded text-md px-4 py-2'onClick={handleSave}>Save</button>
+                                    <button className='cursor-pointer bg-teal-400 rounded text-md px-4 py-2' onClick={handleSave}>Save</button>
                                     <button className='cursor-pointer bg-red-500 rounded text-md px-4 py-2' onClick={() => setEdit(null)}>Cancel</button>
                                 </div>
                             </div>
