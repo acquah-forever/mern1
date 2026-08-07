@@ -6,7 +6,6 @@ const Search = () => {
 
     const [inputValue, setInputValue] = useState<string>("");
     const [thoughts, setThoughts] = useState<string[]>([]);
-
     const [edit, setEdit] = useState<{
         index: number,
         value: string
@@ -30,8 +29,7 @@ const Search = () => {
         setInputValue("");
     }
 
-    function handleClick1(e: React.MouseEvent<SVGSVGElement>, index: number) {
-        e.preventDefault();
+    function handleClick1(index) {
         setEdit({
             index,
             value: thoughts[index]
@@ -39,25 +37,29 @@ const Search = () => {
 
     }
 
-    function handleChange1(event: React.ChangeEvent<HTMLInputElement>) {
-        setEdit({ ...edit, value: event.target.value });
+    function handleChange1(e: React.ChangeEvent<HTMLInputElement>) {
+        const newEdit = e.target.value
+        setEdit({ ...edit, value: newEdit });
     }
 
-    function handleSave() {
-        if (!edit) return
+    function handleSave(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault()
 
-        const updatedThoughts = [...thoughts.map(thought => thought.trim())];
+        const value = edit.value.trim();
 
-        if (!updatedThoughts[edit.index]) {
+        if (!value) {
             alert("Please enter a valid thought");
             return;
         }
 
-        if (!updatedThoughts[edit.index].startsWith("#")) {
+        if (!value.startsWith("#")) {
             alert("Please start your thought with a #");
             return;
         }
-        updatedThoughts[edit.index] = edit.value;
+
+        const updatedThoughts = [...thoughts];
+        updatedThoughts[edit.index] = value;
+
         setThoughts(updatedThoughts);
         setEdit(null);
     }
@@ -66,7 +68,7 @@ const Search = () => {
         <div className='flex flex-col items-center justify-center w-full'>
             <form className="flex  items-center justify-center gap-2 border border-white rounded-lg px-4 py-2 max-w-4xl w-full">
                 <input className="py-2 px-4 w-full outline-none border-none focus-visible:ring-2 focus-visible:ring-sky-300" type="text" value={inputValue} placeholder="Whats on your mind?(begin thought with #)" onChange={handleChange} />
-                <button type='submit' className="bg-teal-400 rounded text-md px-7 py-3 cursor-pointer" onClick={handleClick}>Send</button>
+                <button type='button' aria-label='Send' className="bg-teal-400 rounded text-md px-7 py-3 cursor-pointer" onClick={handleClick}>Send</button>
             </form>
 
             <div className='mt-5 flex flex-col justify-center w-full max-w-4xl'>
@@ -74,13 +76,15 @@ const Search = () => {
                     <div key={index} className='bg-white/50 p-3 rounded-lg mb-2 flex flex-col justify-between'>
                         <p>{thought}</p>
                         <div className='flex gap-4 mt-5 mb-5'>
-                            <button type='button'>
-                                <MessageCircle className='cursor-pointer hover:text-sky-500' size={20} onClick={(e) => handleClick1(e, index)} />
+                            <button type='button' aria-label="Edit thought" onClick={() => handleClick1(index)}>
+                                <MessageCircle className='cursor-pointer hover:text-sky-500' size={20} />
                             </button>
-                            <button type='button'>
+
+                            <button type='button' aria-label="Like thought">
                                 <Heart className='cursor-pointer hover:text-red-500' size={20} />
                             </button>
-                            <button type='button'>
+
+                            <button type='button' aria-label='Retweet thought'>
                                 <Repeat2 className='cursor-pointer hover:text-purple-500' size={20} />
                             </button>
                         </div>
@@ -91,7 +95,7 @@ const Search = () => {
                                 <input className='w-full border-2 border-sky-600 outline-none mb-5 p-3' type="text" value={edit.value} onChange={handleChange1} />
                                 <div className='flex justify-end gap-2 mt-2'>
                                     <button className='cursor-pointer bg-teal-400 rounded text-md px-4 py-2' onClick={handleSave}>Save</button>
-                                    <button className='cursor-pointer bg-red-500 rounded text-md px-4 py-2' onClick={() => setEdit(null)}>Cancel</button>
+                                    <button className='cursor-pointer bg-red-500 rounded text-md px-4 py-2' onClick={() => setEdit(null)}>Delete</button>
                                 </div>
                             </div>
                         )}
