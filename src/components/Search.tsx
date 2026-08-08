@@ -30,10 +30,7 @@ const Search = () => {
     }
 
     function handleClick1(index) {
-        setEdit({
-            index,
-            value: thoughts[index]
-        });
+        setEdit({ index,value: thoughts[index] });
 
     }
 
@@ -73,7 +70,7 @@ const Search = () => {
 
             <div className='mt-5 flex flex-col justify-center w-full max-w-4xl'>
                 {thoughts.map((thought, index) => (
-                    <div key={index} className='bg-white/50 p-3 rounded-lg mb-2 flex flex-col justify-between'>
+                    <div key={index} className='bg-white/50 p-3 rounded-lg mb-3 flex flex-col justify-between hover:scale-110 duration-120'>
                         <p>{thought}</p>
                         <div className='flex gap-4 mt-5 mb-5'>
                             <button type='button' aria-label="Edit thought" onClick={() => handleClick1(index)}>
