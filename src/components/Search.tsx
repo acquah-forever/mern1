@@ -27,7 +27,7 @@ const Search = () => {
         setInputValue("");
     }
 
-    function handleClick1(index) {
+    function handleClick1(index: number) {
         setEdit({ index, value: thoughts[index] });
 
     }
