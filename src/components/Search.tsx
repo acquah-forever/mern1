@@ -1,15 +1,13 @@
 import { useState } from 'react';
-import { MessageCircle, Heart, Repeat2 } from 'lucide-react';
+import { MessageCircle, Heart } from 'lucide-react';
 
 
 const Search = () => {
 
     const [inputValue, setInputValue] = useState<string>("");
     const [thoughts, setThoughts] = useState<string[]>([]);
-    const [edit, setEdit] = useState<{
-        index: number,
-        value: string
-    } | null>(null);
+    const [edit, setEdit] = useState<{ index: number, value: string } | null>(null);
+    const [count, setCount] = useState<Record<number, number>>({});
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         setInputValue(e.target.value)
@@ -30,13 +28,17 @@ const Search = () => {
     }
 
     function handleClick1(index) {
-        setEdit({ index,value: thoughts[index] });
+        setEdit({ index, value: thoughts[index] });
 
     }
 
     function handleChange1(e: React.ChangeEvent<HTMLInputElement>) {
         const newEdit = e.target.value
         setEdit({ ...edit, value: newEdit });
+    }
+
+    function handleCount(index: number){
+        setCount(prev => ({...prev, [index]: (prev[index] ?? 0) + 1}))
     }
 
     function handleSave(e: React.MouseEvent<HTMLButtonElement>) {
@@ -77,13 +79,12 @@ const Search = () => {
                                 <MessageCircle className='cursor-pointer hover:text-sky-500' size={20} />
                             </button>
 
-                            <button type='button' aria-label="Like thought">
-                                <Heart className='cursor-pointer hover:text-red-500' size={20} />
-                            </button>
-
-                            <button type='button' aria-label='Retweet thought'>
-                                <Repeat2 className='cursor-pointer hover:text-purple-500' size={20} />
-                            </button>
+                            <div className='flex items-center gap-1'>
+                                <button type='button' aria-label="Like thought" onClick={() => handleCount(index)}>
+                                    <Heart className='cursor-pointer hover:text-red-500' size={20} />
+                                </button>
+                                <p className='text-sm mt-2'>{count[index] ?? 0}</p>
+                            </div>
                         </div>
 
                         {edit?.index === index && (
