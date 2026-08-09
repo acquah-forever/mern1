@@ -13,7 +13,7 @@ const NavBar = () => {
     <>
       <div className="flex justify-between items-center p-4 ">
         <NavLink to={"/"}>
-          <HousePlug className="cursor-pointer text-white hover:text-black hover:scale-125 duration-150" size={35} />
+          <HousePlug className="cursor-pointer text-white hover:text-black hover:scale-125 duration-150" size={30} />
         </NavLink>
         <ul className="flex justify-center items-center gap-5 text-white text-lg font-semibold">
           <NavLink to={"/notifications"}>
@@ -29,8 +29,8 @@ const NavBar = () => {
             <li className="cursor-pointer border rounded p-2 hover:bg-black hover:scale-125 duration-150 hidden md:flex">Login</li>
           </NavLink>
 
-          {isMenuOpen ? <X className="flex md:hidden" size={30} onClick={handleClick} /> :
-            <Menu className="flex md:hidden" size={30} onClick={handleClick} />}
+          {isMenuOpen ? <X className="flex md:hidden" size={25} onClick={handleClick} /> :
+            <Menu className="flex md:hidden" size={25} onClick={handleClick} />}
         </ul>
       </div >
 
