@@ -74,12 +74,12 @@ const Search = () => {
                         <p className='text-sm sm:text-lg'>{thought}</p>
                         <div className='flex gap-2 mt-2 mb-5'>
                             <button type='button' aria-label="Edit thought" onClick={() => handleClick1(index)}>
-                                <MessageCircle className='cursor-pointer hover:text-sky-500' size={18}  />
+                                <MessageCircle className='cursor-pointer hover:text-sky-500' size={19}  />
                             </button>
 
                             <div className='flex items-center gap-1'>
                                 <button type='button' aria-label="Like thought" onClick={() => handleCount(index)}>
-                                    <Heart className='cursor-pointer hover:text-red-500'  size={18}/>
+                                    <Heart className='cursor-pointer hover:text-red-500'  size={19}/>
                                 </button>
                                 <p className='text-sm mt-2'>{count[index] ?? 0}</p>
                             </div>
