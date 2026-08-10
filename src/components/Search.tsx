@@ -74,12 +74,12 @@ const Search = () => {
                         <p className='text-sm sm:text-lg'>{thought}</p>
                         <div className='flex gap-2 mt-2 mb-5'>
                             <button type='button' aria-label="Edit thought" onClick={() => handleClick1(index)}>
-                                <MessageCircle className='cursor-pointer hover:text-sky-500' size={18}  />
+                                <MessageCircle className='cursor-pointer hover:text-sky-500' size={19}  />
                             </button>
 
                             <div className='flex items-center gap-1'>
                                 <button type='button' aria-label="Like thought" onClick={() => handleCount(index)}>
-                                    <Heart className='cursor-pointer hover:text-red-500'  size={18}/>
+                                    <Heart className='cursor-pointer hover:text-red-500'  size={19}/>
                                 </button>
                                 <p className='text-sm mt-2'>{count[index] ?? 0}</p>
                             </div>
@@ -91,7 +91,7 @@ const Search = () => {
                                 <input className='w-full border-2 border-sky-600 outline-none mb-5 p-3 text-sm ms:text-lg' type="text" value={edit.value} onChange={handleChange1} />
                                 <div className='flex justify-end gap-2 mt-2'>
                                     <button className='cursor-pointer bg-teal-400 rounded text-sm sm:text-md px-4 py-2' onClick={handleSave}>Save</button>
-                                    <button className='cursor-pointer bg-red-500 rounded text-sm sm:text-md px-4 py-2' onClick={() => setEdit(null)}>Delete</button>
+                                    <button className='cursor-pointer bg-red-500 rounded text-sm sm:text-md px-4 py-2' onClick={() => setEdit(null)}>Cancel</button>
                                 </div>
                             </div>
                         )}
