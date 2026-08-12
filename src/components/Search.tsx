@@ -62,7 +62,7 @@ const Search = () => {
     }
 
     return (
-        <div className='flex flex-col items-center justify-center w-full px-5'>
+        <section className='flex flex-col items-center justify-center w-full px-5'>
             <form className="flex items-center justify-center gap-2 border border-white rounded-lg px-3 sm:px-4 py-2 max-w-4xl w-full">
                 <input className="py-2 px-4 w-full outline-none border-none focus-visible:ring-2 text-sm sm:text-lg focus-visible:ring-sky-300 placeholder:text-sm"  type="text" value={inputValue} placeholder="Whats on your mind?(begin thought with #)" onChange={handleChange} />
                 <button type='button' aria-label='Send' className="bg-teal-400 rounded text-sm sm:text-md px-4 sm:px-7 py-2 sm:py-3 cursor-pointer" onClick={handleClick}>Send</button>
@@ -100,7 +100,7 @@ const Search = () => {
 
             </div>
 
-        </div>
+        </section>
     )
 }
 
