@@ -3,12 +3,16 @@ import { NavLink } from "react-router-dom"
 
 const Profile = () => {
   return (
-    <NavLink to='/profile'>
+    <NavLink to='/profile' className='grid grid-cols-1'>
       <div>
-        <UserRoundArrowLeft size={50} />
-        <h1>Username</h1>
-        <button>Share Profile</button>
-        <button>Edit Profile</button>
+        <div className="border rounded-full w-25 h-25 flex justify-center items-center bg-gray-400">
+          <UserRoundArrowLeft size={55} />
+        </div>
+        <h1 className="text-2xl font-semibold">Username</h1>
+        <div>
+          <button>Share Profile</button>
+          <button>Edit Profile</button>
+        </div>
       </div>
 
     </NavLink>
