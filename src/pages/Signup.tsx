@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { CircleAlert } from "lucide-react";
+import { useState } from "react";
+import { api } from "../api/client";
 
 
 type FormValues = {
@@ -12,10 +14,16 @@ type FormValues = {
 const Signup = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
     const navigate = useNavigate()
+    const [submitError, setSubmitError] = useState("");
 
-    function onsubmit(data: FormValues) {
-        console.log(data)
-        navigate("/")
+    async function onsubmit(data: FormValues) {
+        try {
+            setSubmitError("");
+            await api.signUp(data);
+            navigate("/");
+        } catch (error) {
+            setSubmitError(error instanceof Error ? error.message : "Unable to sign up");
+        }
     }
 
     function handleClick() {
@@ -53,6 +61,7 @@ const Signup = () => {
                 {errors.password && <span className="text-red-500 text-sm font-semibold flex items-center">
                     <CircleAlert className="mr-1" size={15} />
                     {errors.password.message}</span>}
+                {submitError && <span className="text-red-500 text-sm font-semibold">{submitError}</span>}
                 <button className="bg-blue-600 text-white rounded-lg py-3 sm:py-4 text-md sm:text-xl mb-7 hover:bg-blue-500 cursor-pointer" type="submit">Sign Up</button>
                 <div className="flex items-center">
                     <div className="grow border-t border-gray-300"></div>
