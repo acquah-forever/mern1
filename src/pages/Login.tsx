@@ -1,12 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { CircleAlert } from "lucide-react";
-import { useState } from "react";
-import { api } from "../api/client";
 
 
 type FormValues = {
-  username: string,
+  email: string,
   password: string
 }
 
@@ -15,18 +13,12 @@ const Login = () => {
 
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
   const navigate = useNavigate()
-  const [submitError, setSubmitError] = useState("");
 
 
 
-  async function onsubmit(data: FormValues) {
-    try {
-      setSubmitError("");
-      await api.logIn(data);
-      navigate("/");
-    } catch (error) {
-      setSubmitError(error instanceof Error ? error.message : "Unable to log in");
-    }
+  function onsubmit(data: FormValues) {
+    console.log(data)
+    navigate("/")
   }
 
   function handleClick() {
@@ -42,12 +34,12 @@ const Login = () => {
         </div>
 
         <div className="sm:p-1 flex flex-col border hover:border-blue-500 rounded-lg">
-          <label className="pl-3 py-1 text-sm" htmlFor="username">Username</label>
-          <input className="px-4 py-0.5 outline-none border-none" id="username" type="text" {...register("username", { required: "Enter your username" })} />
+          <label className="pl-3 py-1 text-sm" htmlFor="email">Email</label>
+          <input className="px-4 py-0.5 outline-none border-none" id="email" type="email" {...register("email", { required: "Enter an email address, like name@example.com" })} />
         </div>
-        {errors.username && <span className="text-red-500 text-sm font-semibold flex items-center">
+        {errors.email && <span className="text-red-500 text-sm font-semibold flex items-center">
           <CircleAlert className="mr-1" size={15} />
-          {errors.username.message} </span>}
+          {errors.email.message} </span>}
 
         <div className="sm:p-1 flex flex-col border hover:border-blue-500 rounded-lg">
           <label className="pl-3 py-1 text-sm" htmlFor="password">Password</label>
@@ -56,7 +48,6 @@ const Login = () => {
         {errors.password && <span className="text-red-500 text-sm font-semibold flex items-center">
           <CircleAlert className="mr-1" size={15} />
           {errors.password.message}</span>}
-        {submitError && <span className="text-red-500 text-sm font-semibold">{submitError}</span>}
         <span className="cursor-pointer underline hover:text-slate-500 text-sm">Forgot Password?</span>
         <button className="bg-blue-600 text-white rounded-lg py-3 sm:py-4 text-md sm:text-xl mb-7 hover:bg-blue-500 cursor-pointer" type="submit">Login</button>
         <div className="flex items-center">
