@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { MessageCircle, Heart } from 'lucide-react';
 import { useQuery, useMutation } from '@tanstack/react-query';
-import { type Users } from '../models/users'
+import type { Users } from '../models/users'
 
 
 
@@ -9,6 +9,25 @@ const Search = () => {
 
   async function getThoughts() {
     const res = await fetch("/api/thoughts")
+    if (!res.ok) {
+      throw new Error("Failed to fetch")
+    }
+    return res.json() as Promise<Users []>
+  }
+
+  async function createThought(newThought: CreateThoughtInput) {
+    const res = await fetch ("/api/notes" ,{
+      method: POST,
+      headers: {
+        "Content-type" : "application/json"
+      },
+      body: JSON.stringify(newThought)
+    })
+    if(!res.ok) {
+      throw new Error("Failed to create thoght")
+    }
+
+    return res.json() as Promise<Note>
   }
 
     const [inputValue, setInputValue] = useState<string>("");
