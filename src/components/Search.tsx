@@ -110,13 +110,13 @@ const Search = () => {
     setEdit({ index, value: thoughts[index] });
   }
 
+  function handleCount(index: number) {
+    setCount(prev => ({ ...prev, [index]: (prev[index] ?? 0) + 1 }))
+  }
+
   function handleChange1(e: React.ChangeEvent<HTMLInputElement>) {
     const newEdit = e.target.value
     setEdit({ ...edit, value: newEdit });
-  }
-
-  function handleCount(index: number) {
-    setCount(prev => ({ ...prev, [index]: (prev[index] ?? 0) + 1 }))
   }
 
   function handleSave(e: React.MouseEvent<HTMLButtonElement>) {
