@@ -13,7 +13,11 @@ const Search = () => {
     return res.json() as Promise<Thoughts[]>
   }
 
-  async function createThought(newThought) {
+  interface CreateThoughtInput {
+    newThought: string
+  }
+
+  async function createThought(newThought: CreateThoughtInput) {
     const res = await fetch("/api/thoughts", {
       method: "POST",
       headers: {
@@ -28,8 +32,13 @@ const Search = () => {
     return res.json() as Promise<Thoughts>
   }
 
-  async function updateThought({ thoughtID, thought }) {
-    const res = await fetch(`/api/thoughts/${thoughtID}`, {
+  interface UpdateThoughtInput {
+    thoughtId: string,
+    thought: string
+  }
+
+  async function updateThought({ thoughtId, thought }: UpdateThoughtInput) {
+    const res = await fetch(`/api/thoughts/${thoughtId}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json"
@@ -79,7 +88,7 @@ const Search = () => {
   const { mutate: deleteThoughtMutation } = useMutation({
     mutationFn: deleteThought,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["thought"] });
+      queryClient.invalidateQueries({ queryKey: ["data"] });
     }
   })
 
@@ -115,8 +124,8 @@ const Search = () => {
   }
 
   function handleChange1(e: React.ChangeEvent<HTMLInputElement>) {
-    const newEdit = e.target.value
-    setEdit({ ...edit, value: newEdit });
+    if (!edit) return;
+    setEdit({ ...edit, value: e.target.value });
   }
 
   function handleSave(e: React.MouseEvent<HTMLButtonElement>) {
