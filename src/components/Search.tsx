@@ -158,14 +158,14 @@ const Search = () => {
       </form>
 
       <div className='mt-5 flex flex-col justify-center w-full max-w-4xl'>
-        {thoughts.map((thought, index) => (
-          <div key={index} className='bg-white/50 p-2 rounded-lg mb-3 flex flex-col justify-between hover:scale-110 duration-120'>
-            <p className='text-sm sm:text-lg'>{thought}</p>
+        {thoughts.map((item) => (
+          <div key={thought._id} className='bg-white/50 p-2 rounded-lg mb-3 flex flex-col justify-between hover:scale-110 duration-120'>
+            <p className='text-sm sm:text-lg'>{thought.item}</p>
             <div className='flex gap-2 mt-2 mb-5'>
               <button type='button' aria-label="Edit thought" onClick={() => handleClick1(index)}>
                 <MessageCircle className='cursor-pointer hover:text-sky-500' size={19} />
               </button>
-
+.
               <div className='flex items-center gap-1'>
                 <button type='button' aria-label="Like thought" onClick={() => handleCount(index)}>
                   <Heart className='cursor-pointer hover:text-red-500' size={19} />

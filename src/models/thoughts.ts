@@ -1,4 +1,6 @@
 export type Thoughts = {
-    id: string,
-    thought:string
+  _id: string;
+  thought: string;
+  createdAt: string;
+  updatedAt: string;
 }
