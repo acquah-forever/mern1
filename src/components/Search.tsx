@@ -13,7 +13,11 @@ const Search = () => {
     return res.json() as Promise<Thoughts[]>
   }
 
-  async function createThought(newThought) {
+  interface CreateThoughtInput {
+    newThought: string
+  }
+
+  async function createThought(newThought: CreateThoughtInput) {
     const res = await fetch("/api/thoughts", {
       method: "POST",
       headers: {
@@ -28,8 +32,13 @@ const Search = () => {
     return res.json() as Promise<Thoughts>
   }
 
-  async function updateThought({ thoughtID, thought }) {
-    const res = await fetch(`/api/thoughts/${thoughtID}`, {
+  interface UpdateThoughtInput {
+    thoughtId: string,
+    thought: string
+  }
+
+  async function updateThought({ thoughtId, thought }: UpdateThoughtInput) {
+    const res = await fetch(`/api/thoughts/${thoughtId}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json"
@@ -79,7 +88,7 @@ const Search = () => {
   const { mutate: deleteThoughtMutation } = useMutation({
     mutationFn: deleteThought,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["thought"] });
+      queryClient.invalidateQueries({ queryKey: ["data"] });
     }
   })
 
@@ -110,13 +119,13 @@ const Search = () => {
     setEdit({ index, value: thoughts[index] });
   }
 
-  function handleChange1(e: React.ChangeEvent<HTMLInputElement>) {
-    const newEdit = e.target.value
-    setEdit({ ...edit, value: newEdit });
-  }
-
   function handleCount(index: number) {
     setCount(prev => ({ ...prev, [index]: (prev[index] ?? 0) + 1 }))
+  }
+
+  function handleChange1(e: React.ChangeEvent<HTMLInputElement>) {
+    if (!edit) return;
+    setEdit({ ...edit, value: e.target.value });
   }
 
   function handleSave(e: React.MouseEvent<HTMLButtonElement>) {
@@ -149,14 +158,14 @@ const Search = () => {
       </form>
 
       <div className='mt-5 flex flex-col justify-center w-full max-w-4xl'>
-        {thoughts.map((thought, index) => (
-          <div key={index} className='bg-white/50 p-2 rounded-lg mb-3 flex flex-col justify-between hover:scale-110 duration-120'>
-            <p className='text-sm sm:text-lg'>{thought}</p>
+        {thoughts.map((item) => (
+          <div key={thought._id} className='bg-white/50 p-2 rounded-lg mb-3 flex flex-col justify-between hover:scale-110 duration-120'>
+            <p className='text-sm sm:text-lg'>{thought.item}</p>
             <div className='flex gap-2 mt-2 mb-5'>
               <button type='button' aria-label="Edit thought" onClick={() => handleClick1(index)}>
                 <MessageCircle className='cursor-pointer hover:text-sky-500' size={19} />
               </button>
-
+.
               <div className='flex items-center gap-1'>
                 <button type='button' aria-label="Like thought" onClick={() => handleCount(index)}>
                   <Heart className='cursor-pointer hover:text-red-500' size={19} />
